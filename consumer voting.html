@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+</head>
+<body>
+    <h1>Welcome to My Voting System</h1>
+    <form id="votingForm">
+        <label for="username">Name:</label>
+        <input type="text" id="username" required><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+        
+        <h3>Allocate Your Points</h3>
+        <label for="pointsA">Product A:</label>
+        <input type="number" id="pointsA" min="0" max="100"><br>
+        
+        <label for="pointsB">Product B:</label>
+        <input type="number" id="pointsB" min="0" max="100"><br>
+        
+        <label for="pointsC">Product C:</label>
+        <input type="number" id="pointsC" min="0" max="100"><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById('votingForm').onsubmit = function(event) {
+            event.preventDefault();
+            const pointsA = parseInt(document.getElementById('pointsA').value) || 0;
+            const pointsB = parseInt(document.getElementById('pointsB').value) || 0;
+            const pointsC = parseInt(document.getElementById('pointsC').value) || 0;
+
+            const totalPoints = pointsA + pointsB + pointsC;
+            if (totalPoints > 100) {
+                alert("You can only allocate up to 100 points.");
+            } else {
+                alert("Thank you for voting!\n" +
+                      "Product A: " + pointsA + "\n" +
+                      "Product B: " + pointsB + "\n" +
+                      "Product C: " + pointsC);
+            }
+        };
+    </script>
+</body>
+</html>
